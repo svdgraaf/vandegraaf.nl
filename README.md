@@ -1,5 +1,3 @@
-# vandegraaf
-
 __This is not [vandegraaf.com](https://www.vandegraaf.com/).__
 
 This domain is __not__ for sale.
