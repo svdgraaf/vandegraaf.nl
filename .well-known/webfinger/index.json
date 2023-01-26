@@ -1,19 +1,19 @@
 {
   "subject": "acct:sander@mastodon.social",
   "aliases": [
-    "https://mastodon.social/@sander",
-    "https://mastodon.social/users/sander"
+    "https://mastodon.social/@svdgraaf",
+    "https://mastodon.social/users/svdgraaf"
   ],
   "links": [
      {
       "rel": "http://webfinger.net/rel/profile-page",
       "type": "text/html",
-      "href": "https://mastodon.social/@sander"
+      "href": "https://mastodon.social/@svdgraaf"
     },
     {
       "rel": "self",
       "type": "application/activity+json",
-      "href": "https://mastodon.social/users/sander"
+      "href": "https://mastodon.social/users/svdgraaf"
     },
     {
       "rel": "http://ostatus.org/schema/1.0/subscribe",
