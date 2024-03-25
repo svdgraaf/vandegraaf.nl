@@ -8,57 +8,250 @@
     <body>
         <div style="width: 100%;height: 100vh;" id="tree"></div>
         <script>
-            //JavaScript
             var chart = new FamilyTree(document.getElementById("tree"), {
                 // mouseScrool: FamilyTree.none,
-                // siblingSeparation: 120,
-                template: 'john',   
+                siblingSeparation: 120,
+                template: 'john',
+                mode: 'dark',
                 nodeBinding: {
                     field_0: "name",
                 }
             });
 
             chart.load([
+                // gen 1
                 { id: 1, name: "Wouter van de Graaf", gender: 'male', born: "1645" },
                 
+                // gen 2
                 { id: 2, fid: 1, pids: [3], name: "Hendrik Wouter van de Graaf", gender: 'male', born: "1670" },
                 { id: 3, pids: [2], name: "Kunera Jans van de Putten", gender: 'female', born: "1675" },
 
+                // gen 3
                 { id: 4, mid: 3, fid: 2, pids: [5], name: "Jan Hendrikse van de Graaf", gender: 'male', born: "1700-03", born_place: "Papendrecht, Zuid-Holland, The Netherlands", deceased: "1768-02-13", deceased_place: "Papendrecht" },
                 { id: 5, pids: [4], name: "Teuntje Teunis de Boer", gender: 'female', born: "1700-03", born_place: "Papendrecht, Zuid-Holland, The Netherlands", deceased: "1768-02-13", deceased_place: "Papendrecht" },
 
+                // gen 4
                 { id: 6, pids: [7], fid: 4, mid: 5, name: "Hendrik Jansz van de Graaf", gender: 'male'},
                 { id: 7, pids: [6], name: "Neeltje Stoik", gender: 'female'},
 
+                // gen 5
                 { id: 8, pids: [9], fid: 6, mid: 7, name: "Huig van de Graaf", gender: 'male'},
                 { id: 9, pids: [8], name: "Geertje Roskam", gender: 'female'},
 
-                { id: 10, pids: [11], fid: 8, mid: 9, name: "Jacob van de Graaf", gender: 'male'},
-                { id: 11, pids: [10], name:"Jenneke Mulders", gender: 'female'},
+                // gen 6
+                { id: 10, pids: [13], fid: 8, mid: 9, name: "Jacob van de Graaf", gender: 'male'},
+                { id: 11, pids: [12], name:"Johannes (Jan) Mulders", gender: 'male'},
+                { id: 12, pids: [11], name:"Margaretha Hendiks van Es", gender: 'female'},
+                { id: 13, pids: [10], fid: 11, mid:12,  name:"Jenneke Mulders", gender: 'female'},
 
+                // gen 7
+                { id: 14, pids: [17], fid: 10, mid: 13, name: "Johannes van de Graaf", gender:'male'},
+                { id: 15, pids: [16], name: "Willem van Asperen", gender:'male'},
+                { id: 16, pids: [15], name: "Ariaantje Kroon", gender:'female'},
+                { id: 17, pids: [14], fid: 15, mid: 16, name: "Janigje Cornelia van Asperen", gender:'female'},
 
-                // { id: 2, pids: [1], name: "Queen Elizabeth", title: "The Queen Mother", img: "https://cdn.balkan.app/shared/f2.png", gender: 'female' },
+                    { id: 18, pids: [], fid: 14, mid: 17, name: "Jacobus van de Graaf", gender:'male'},
 
-                // { id: 3, pids: [4], mid: 2, fid: 1, name: "Queen Elizabeth II", img: "https://cdn.balkan.app/shared/f5.png", gender: 'female' },
-                // { id: 4, pids: [3], name: "Prince Philip", title: "Duke of Edinburgh", img: "https://cdn.balkan.app/shared/f3.png", gender: 'male' },
+                    { id: 19, pids: [22], fid: 14, mid: 17, name: "Willem van de Graaf", gender:'male'},
+                    { id: 20, pids: [21], name: "Jacob Kok", gender:'male'},
+                    { id: 21, pids: [20], name: "Kornelia van der Pijl", gender:'male'},
+                    { id: 22, pids: [19], fid: 20, mid: 21, name: "Willemijntje Margrieta Kok", gender:'female'},
 
-                // { id: 5, mid: 2, fid: 1, name: "Princess Margaret", img: "https://cdn.balkan.app/shared/f6.png", gender: 'male' },
+                    { id: 23, pids: [], fid: 14, mid: 17, name: "Adriaan van de Graaf", gender:'male'},
+                    
+                    { id: 24, pids: [27], fid: 14, mid: 17, name: "Jennike van de Graaf", gender:'female'},
+                    { id: 27, pids: [24], fid: 25, mid: 26, name: "Egbertus Gerardus Duijneveld", gender:'male'},
 
-                // { id: 6, mid: 3, fid: 4, pids: [7,8], name: "Charles", title: "Prince of Wales", img: "https://cdn.balkan.app/shared/f8.png", gender: 'male' },
-                // { id: 7, pids: [6], name: "Diana", title: "Princess of Wales", img: "https://cdn.balkan.app/shared/f9.png", gender: 'female' },
-                // { id: 8, pids: [6], name: "Camila", title: "Duchess of Cornwall", img: "https://cdn.balkan.app/shared/f7.png", gender: 'female' },
+                    { id: 28, pids: [29], fid: 14, mid: 17, name: "Adriana Margaretha Hendrica van de Graaf", gender:'female'},
+                    { id: 29, pids: [28], name: "Gerardus Boots", gender:'male'},
 
-                // { id: 9,  mid: 3, fid: 4, name: "Anne", title: "Princess Royal", img: "https://cdn.balkan.app/shared/f10.png", gender: 'female' },
-                // { id: 10,  mid: 3, fid: 4, name: "Prince Andrew", title: "Duke of York", img: "https://cdn.balkan.app/shared/f11.png", gender: 'male' },
-                // { id: 11,  mid: 3, fid: 4, name: "Prince Edward", title: "Earl of Wessex", img: "https://cdn.balkan.app/shared/f12.png", gender: 'male' },
+                    { id: 39, pids: [], fid: 14, mid: 17, name: "Johanna Cornelia van de Graaf", gender:'female'},
+                    
+                    { id: 40, pids: [41], fid: 14, mid: 17, name: "Clara Elizabeth van de Graaf", gender:'female'},
+                    { id: 41, pids: [40], name: "B. Dijkman", gender:'male'},
 
-                // { id: 12, fid: 6, mid: 7, pids: [14], name: "Prince William", title: "Duch of Cambridge", img: "https://cdn.balkan.app/shared/f14.png", gender: 'male' },
-                // { id: 13, fid: 6, mid: 7, pids: [15], name: "Prince Harry", img: "https://cdn.balkan.app/shared/f15.png", gender: 'male' },
-                // { id: 14, pids: [12], name: "Catherine", title: "Duchess of Cambridge", img: "https://cdn.balkan.app/shared/f13.png", gender: 'female' },
-                // { id: 15, pids: [13], name: "Meghan Markle", img: "https://cdn.balkan.app/shared/f16.png", gender: 'female' },
-                // { id: 16, fid: 12, mid: 14, name: "Prince George", img: "https://cdn.balkan.app/shared/f17.png", gender: 'male' },
-                // { id: 17, fid: 12, mid: 14, name: "Prince Charlotte", img: "https://cdn.balkan.app/shared/f18.png", gender: 'female' },
-                // { id: 18, fid: 12, mid: 14, name: "Prince Louis", img: "https://cdn.balkan.app/shared/f19.png", gender: 'male' }
+                    { id: 42, pids: [43], fid: 14, mid: 17, name: "Huibert Bartholomeus Jacob van de Graaf", gender:'male'},
+                    { id: 43, pids: [42], name: "Hendrika (Riek) Helderop", gender:'female'},
+
+                    { id: 44, pids: [], fid: 14, mid: 17, name: "Pietje Grietje Jacob van de Graaf", gender:'female'},
+
+                    { id: 45, pids: [46], fid: 14, mid: 17, name: "Leender van de Graaf", gender:'male'},
+                    { id: 46, pids: [45], name: "Cornelia Helderop", gender:'female'},
+
+                    { id: 47, pids: [48], fid: 14, mid: 17, name: "Gerrit Hendrik Pieter van de Graaf", gender:'male'},
+                    { id: 48, pids: [47], name: "Hendrina Hillegonda Margaretha Albertina Snijder", gender:'female'},
+
+                    { id: 49, pids: [], fid: 14, mid: 17, name: "Johannes Cornelius van de Graaf", gender:'male'},
+
+                // gen 8
+                { id: 50, pids: [51], fid: 19, mid: 22, name: "Johannes Jacob van de Graaf", gender:'male'},
+                { id: 51, pids: [50], name: "Vera Marie Spade", gender:'female'},
+
+                { id: 52, pids: [53], fid: 19, mid: 22, name: "William Henry van de Graaf", gender:'male'},
+                { id: 53, pids: [52], name: "Margerat Hubbard", gender:'female'},
+
+                // --- 
+                { id: 54, pids: [55], fid: 27, mid: 24, name: "Nicholas Johannes Duijneveld", gender:'male'},
+                { id: 55, pids: [54], name: "Anneliese Drijgala", gender:'female'},
+                { id: 56, pids: [57], fid: 27, mid: 24, name: "Johannes Duijneveld", gender:'male'},
+                { id: 57, pids: [56], name: "Plony Waalwijk", gender:'female'},
+                { id: 58, pids: [59], fid: 27, mid: 24, name: "Hendrica Cornelia Johanna Duijneveld", gender:'female'},
+                { id: 59, pids: [58], name: "Leendert Landheer", gender:'male'},
+                { id: 60, pids: [61], fid: 27, mid: 24, name: "Egbertus Gerardus Duijneveld", gender:'male'},
+                { id: 61, pids: [60], name: "Elvire Adeline Voorneman", gender:'female'},
+
+                // ---
+                { id: 62, pids: [63], fid: 41, mid: 40, name: "Tineke Dijkman", gender:'female'},
+                { id: 63, pids: [62], name: "Albert van de Braak", gender:'male'},
+
+                // ---
+                { id: 64, pids: [65], fid: 42, mid: 43, name: "Johanna van de Graaf", gender:'female'},
+                { id: 65, pids: [64], name: "Cor van de Bijl", gender:'male'},
+
+                { id: 74, pids: [75], fid: 42, mid: 43, name: "Teuna van de Graaf", gender:'female'},
+                { id: 75, pids: [74], name: "Lucas van Donk", gender:'male'},
+
+                { id: 76, pids: [77], fid: 42, mid: 43, name: "Jannigje Cornelia van de Graaf", gender:'female'},
+                { id: 77, pids: [76], name: "Cees Hubert", gender:'male'},
+
+                { id: 78, pids: [79], fid: 42, mid: 43, name: "Huibert van de Graaf", gender:'male'},
+                { id: 79, pids: [78], name: "Tiny Bogert", gender:'female'},
+
+                // ---
+                { id: 80, pids: [81], fid: 45, mid: 46, name: "Johannes van de Graaf", gender:'male'},
+                { id: 81, pids: [82], name: "Wilhelmina van Zanten", gender:'female'},
+
+                { id: 82, pids: [83], fid: 45, mid: 46, name: "Corry van de Graaf", gender:'female'},
+                { id: 83, pids: [82], name: "Arie Dooren", gender:'female'},
+
+                { id: 84, pids: [], fid: 45, mid: 46, name: "Cornelia van de Graaf", gender:'female'},
+
+                // ---
+                { id: 90, pids: [], fid: 47, mid: 48, name: "Anna Maria", gender:'female'},
+
+                { id: 91, pids: [92], fid: 47, mid: 48, name: "Gerrit Jacobus van de Graaf", gender:'male'},
+                { id: 92, pids: [91], name: "Catharina Baas", gender:'female'},
+
+                { id: 93, pids: [], fid: 47, mid: 48, name: "Jan van de Graaf", gender:'male'},
+
+                { id: 94, pids: [95], fid: 47, mid: 48, name: "Jannigje Cornelia van de Graaf", gender:'female'},
+                { id: 95, pids: [94], name: "Frits Feldmeyer", gender:'male'},
+
+                // ---
+                { id: 100, pids: [101], fid: 50, mid: 51, name: "Johannes Jacob van de Graaf", gender:'male'},
+                { id: 101, pids: [100], name: "Laurie Keetch", gender:'female'},
+
+                { id: 102, pids: [103], fid: 50, mid: 51, name: "Margaret Anna van de Graaf", gender:'female'},
+                { id: 103, pids: [102], name: "Robert Selby Shannon", gender:'male'},
+
+                { id: 104, pids: [105], fid: 50, mid: 51, name: "Tineke Lisa van de Graaf", gender:'female'},
+
+                // ---
+                { id: 110, pids: [111], fid: 52, mid: 53, name: "William Conkling van de Graaf", gender:'male'},
+                { id: 111, pids: [110], name: "Stacey Steinacher", gender:'female'},
+
+                { id: 112, pids: [113], fid: 52, mid: 53, name: "Dirk Whitney van de Graaf", gender:'male'},
+                { id: 113, pids: [112], name: "Kandi Stevenson", gender:'female'},
+
+                { id: 114, pids: [115], fid: 52, mid: 53, name: "Lisa van de Graaf", gender:'female'},
+                { id: 115, pids: [114], name: "Jeff Cook", gender:'male'},
+
+                // ---
+                { id: 120, pids: [121], fid: 24, mid: 27, name: "Klaus Duijneveld", gender:'male'},
+                { id: 121, pids: [120], name: "Guurtje Meijer", gender:'female'},
+
+                { id: 122, pids: [123], fid: 24, mid: 27, name: "Bert Duijneveld", gender:'male'},
+                { id: 123, pids: [122], name: "Annemiek Baltus", gender:'female'},
+
+                { id: 124, pids: [125], fid: 24, mid: 27, name: "Elsa Duijneveld", gender:'female'},
+                { id: 125, pids: [124], name: "Klaas Akkerman", gender:'male'},
+
+                { id: 126, pids: [127], fid: 24, mid: 27, name: "Nico Duijneveld", gender:'male'},
+                { id: 127, pids: [126], name: "Alie Maakal", gender:'female'},
+
+                // ---
+                { id: 130, pids: [], fid: 56, mid: 57, name: "Hans Duijneveld", gender:'male'},
+
+                { id: 131, pids: [132], fid: 56, mid: 57, name: "Cees Duijneveld", gender:'male'},
+                { id: 132, pids: [131], name: "Regina Breuker", gender:'female'},
+
+                // ---
+                { id: 140, pids: [141], fid: 59, mid: 58, name: "Iman Jacobus Landheer", gender:'male'},
+                { id: 141, pids: [140], name: "Marga Moscovici", gender:'female'},
+
+                { id: 142, pids: [143], fid: 59, mid: 58, name: "Jenneke Leni Landheer", gender:'female'},
+                { id: 143, pids: [142], name: "Robert van Boxtel", gender:'male'},
+
+                { id: 144, pids: [145], fid: 59, mid: 58, name: "Hugo Paul Landheer", gender:'male'},
+                { id: 145, pids: [144], name: "Berthe Gezina Fabels", gender:'female'},
+
+                { id: 146, pids: [147], fid: 59, mid: 58, name: "Anna Louise (Loes) Landheer", gender:'female'},
+                { id: 147, pids: [146], name: "Johannes Marinus van der Laan", gender:'male'},
+
+                { id: 148, pids: [149], fid: 59, mid: 58, name: "Johan Leendert Landheer", gender:'male'},
+                { id: 149, pids: [148], name: "Antonia Gerarda Josephina Browns", gender:'female'},
+
+                // ---
+                { id: 160, pids: [], fid: 27, mid: 24, name: "Eric Duijneveld", gender:'male'},
+                { id: 161, pids: [], fid: 27, mid: 24, name: "Peter Duijneveld", gender:'male'},
+                { id: 162, pids: [], fid: 27, mid: 24, name: "Elvire Duijneveld", gender:'female'},
+                { id: 163, pids: [], fid: 27, mid: 24, name: "Jenny Duijneveld", gender:'female'},
+
+                // ---
+                { id: 170, pids: [171], fid: 63, mid: 62, name: "Ellen van de Braak", gender:'female'},
+
+                // ---
+                { id: 180, pids: [181], fid: 65, mid: 64, name: "Walter Victor van de Bijl", gender:'male'},
+                { id: 181, pids: [180], name: "Anneke Huizers", gender:'female'},
+
+                { id: 182, pids: [183], fid: 65, mid: 64, name: "Erika van de Bijl", gender:'female'},
+                { id: 183, pids: [182], name: "Jan ten Hove", gender:'male'},
+
+                { id: 184, pids: [], fid: 65, mid: 64, name: "Helga van de Bijl", gender:'female'},
+                
+                { id: 185, pids: [186], fid: 65, mid: 64, name: "Alexander van de Bijl", gender:'male'},
+                { id: 186, pids: [185], name: "Joke Lamens", gender:'female'},
+
+                // ---
+                { id: 190, pids: [191], fid: 75, mid: 74, name: "Bart Johan van Donk", gender:'male'},
+                { id: 191, pids: [190], name: "Sylvia", gender:'female'},
+
+                { id: 192, pids: [193], fid: 75, mid: 74, name: "Eleonora van Donk", gender:'female'},
+                { id: 193, pids: [192], name: "Hendrik Jacob Leenheer", gender:'male'},
+
+                // ---
+                { id: 200, pids: [], fid: 77, mid: 76, name: "Maartje Cornelia Hubert", gender:'female'},
+                { id: 201, pids: [], fid: 77, mid: 76, name: "Henriette Jenny", gender:'female'},
+
+                // ---
+                { id: 210, pids: [], fid: 78, mid: 79, name: "Cornelia Hendrika van de Graaf", gender:'female'},
+                { id: 211, pids: [], fid: 78, mid: 79, name: "Marie Louise van de Graaf", gender:'female'},
+
+                // ---
+                { id: 220, pids: [221], fid: 80, mid: 81, name: "Leendert Dirk van de Graaf", gender:'male'},
+                { id: 221, pids: [220], name: "Daniera Wilhelmina Boevé", gender:'female'},
+
+                { id: 222, pids: [223], fid: 80, mid: 81, name: "Dirk Johannes van de Graaf", gender:'male'},
+                { id: 223, pids: [222], name: "Eline Busink", gender:'female'},
+
+                { id: 224, pids: [225], fid: 80, mid: 81, name: "Johanna Wilhelmina van de Graaf", gender:'female'},
+                { id: 225, pids: [224], name: "Cornellus Frederik (René)", gender:'male'},
+
+                // ---
+                { id: 230, pids: [231], fid: 83, mid: 82, name: "Gerrit Arie Cornelis Dooren", gender:'male'},
+                { id: 231, pids: [230], name: "Cornelia Rosetta Buijs", gender:'female'},
+
+                { id: 232, pids: [233], fid: 83, mid: 82, name: "Leendert Dooren", gender:'male'},
+                { id: 233, pids: [232], name: "Anja Boogaard", gender:'female'},
+
+                // ---
+                { id: 240, pids: [], fid: 91, mid: 92, name: "Paul van de Graaf", gender:'male'},
+                { id: 241, pids: [], fid: 91, mid: 92, name: "Frank van de Graaf", gender:'male'},
+
+                // ---
+                { id: 250, pids: [], fid: 77, mid: 76, name: "Sylvia Feldmeyer", gender:'female'},
+                { id: 251, pids: [], fid: 77, mid: 76, name: "Frits Feldmeyer", gender:'male'},
+
             ]);
         </script>
         
