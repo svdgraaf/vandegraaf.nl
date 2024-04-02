@@ -3,10 +3,38 @@
     <head>
         <title>Family</title>
         <link rel="stylesheet" type="text/css" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+        <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
         <script src="./family_tree/familytree.js"></script>
+        <style>
+            .bft-search {
+                display: none;
+            }
+        </style>
     </head>
     <body>
-        <div style="width: 100%;height: 100vh;" id="tree"></div>
+        <header class="m-8 pt-8">
+            <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
+                Van de Graaf
+                <span class="text-gray-300">.nl</span>
+            </h1>
+        </header>
+        <div class="pl-8 text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700">
+            <ul class="flex flex-wrap -mb-px">
+                <li class="me-2">
+                    <a href="#" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Home</a>
+                </li>
+                <li class="me-2">
+                    <a href="#" class="inline-block p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500" aria-current="page">Family Tree</a>
+                </li>
+                <li class="me-2">
+                    <a href="#" class="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">Timeline</a>
+                </li>
+            </ul>
+        </div>
+
+        <div style="width: 100%;height: calc(100vh - 6em);" id="tree"></div>
         <script>
             var chart = new FamilyTree(document.getElementById("tree"), {
                 // mouseScrool: FamilyTree.none,
@@ -251,6 +279,13 @@
                 // ---
                 { id: 250, pids: [], fid: 77, mid: 76, name: "Sylvia Feldmeyer", gender:'female'},
                 { id: 251, pids: [], fid: 77, mid: 76, name: "Frits Feldmeyer", gender:'male'},
+
+                // ---
+                { id: 260, pids: [], fid: 77, mid: 76, name: "Sylvia Feldmeyer", gender:'female'},
+                { id: 261, pids: [], fid: 77, mid: 76, name: "Frits Feldmeyer", gender:'male'},
+                { id: 262, pids: [], fid: 77, mid: 76, name: "Frits Feldmeyer", gender:'male'},
+
+
 
             ]);
         </script>
